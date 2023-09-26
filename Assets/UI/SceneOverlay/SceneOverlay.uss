@@ -1,0 +1,85 @@
+/*
+  Base
+*/
+
+.scene-overlay {
+  height: 100%;
+}
+
+.scene-overlay__bar {
+  width: 100%;
+  height: 10%;
+  background-color: #000000;
+}
+
+/*
+  Fade
+*/
+
+.scene-overlay.scene-overlay--fade .scene-overlay__bar {
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+}
+
+.scene-overlay.scene-overlay--fade.scene-overlay--off .scene-overlay__bar {
+  opacity: 0;
+}
+
+/*
+  Bars
+*/
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar {
+  transition-property: translate;
+  transition-duration: 0.75s;
+  transition-timing-function: ease-in-out;
+}
+
+.scene-overlay.scene-overlay--bars.scene-overlay--off .scene-overlay__bar {
+  translate: -100% 0;
+}
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar--1 {
+  transition-delay: 0.05s;
+}
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar--2 {
+  transition-delay: 0.1s;
+}
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar--3 {
+  transition-delay: 0.15s;
+}
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar--4 {
+  transition-delay: 0.2s;
+}
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar--5 {
+  transition-delay: 0.25s;
+}
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar--6 {
+  transition-delay: 0.3s;
+}
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar--7 {
+  transition-delay: 0.35s;
+}
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar--8 {
+  transition-delay: 0.4s;
+}
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar--9 {
+  transition-delay: 0.45s;
+}
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar--10 {
+  transition-delay: 0.5s;
+}
+
+.scene-overlay.scene-overlay--bars .scene-overlay__bar--11 {
+  transition-delay: 0.55s;
+}

@@ -1,0 +1,47 @@
+* {
+  -unity-font: url("project://database/Assets/Fonts/PixelOperator/PixelOperatorMono8-bold.ttf");
+  -unity-font-definition: initial;
+}
+
+.settings {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings__box {
+  background-color: white;
+  width: 800px;
+  padding: 40px;
+}
+
+.settings-row {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.settings-row--space-top {
+  margin-top: 20px;
+}
+
+.settings-row__label {
+  font-size: 20px;
+  letter-spacing: -10px;
+}
+
+.settings-row__options {
+}
+
+.settings-row__option {
+  font-size: 20px;
+  letter-spacing: -7px;
+  display: none;
+}
+
+.settings-row--selected .settings-row__option {
+  color: #ff0000;
+}
+
+.settings-row__option--selected {
+  display: flex;
+}
