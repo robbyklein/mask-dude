@@ -1,0 +1,11 @@
+.splash {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.splash-logo {
+  background-image: url("project://database/Assets/Art/logo.png");
+  width: 111px;
+  height: 78px;
+}

@@ -142,21 +142,25 @@ public class SettingsMenuManager : MonoBehaviour {
     #region Input Handlers
     private void HandleMenuUp() {
         ChangeSelectedSetting(selectedSetting == 0 ? menuSettings.Count - 1 : selectedSetting - 1);
+        SFXManager.Instance.PlaySFX(SFXName.Click);
     }
     private void HandleMenuDown() {
         ChangeSelectedSetting(selectedSetting < menuSettings.Count - 1 ? selectedSetting + 1 : 0);
+        SFXManager.Instance.PlaySFX(SFXName.Click);
     }
 
     private void HandleMenuLeft() {
         int totalOptions = GetTotalOptions();
         int newIndex = selectedOptions[selectedSetting] == 0 ? totalOptions : selectedOptions[selectedSetting] - 1;
         ChangeSelectedOption(newIndex);
+        SFXManager.Instance.PlaySFX(SFXName.Click);
     }
 
     private void HandleMenuRight() {
         int totalOptions = GetTotalOptions();
         int newIndex = selectedOptions[selectedSetting] == totalOptions ? 0 : selectedOptions[selectedSetting] + 1;
         ChangeSelectedOption(newIndex);
+        SFXManager.Instance.PlaySFX(SFXName.Click);
     }
     private void HandleMenuBack() { }
     #endregion

@@ -3,6 +3,8 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "SettingsManager", menuName = "ScriptableObjects/SettingsManager")]
 public class SettingsManagerSO : ScriptableObject {
+  public Action<string> OnMusicVolumeChange;
+  public Action<string> OnSFXVolumeChange;
   public string resolution;
   public string display;
   public string musicVolume;
@@ -48,8 +50,10 @@ public class SettingsManagerSO : ScriptableObject {
         HandleResolutionChange(value);
         break;
       case "musicVolume":
+        OnMusicVolumeChange?.Invoke(value);
         break;
       case "sfxVolume":
+        OnSFXVolumeChange?.Invoke(value);
         break;
       default:
         throw new InvalidOperationException($"Invalid settings key: {key}");
@@ -73,5 +77,4 @@ public class SettingsManagerSO : ScriptableObject {
     Resolution newResolution = ResolutionHelpers.FindResolutionByString(resolutionString);
     Screen.SetResolution(newResolution.width, newResolution.height, Screen.fullScreenMode, newResolution.refreshRateRatio);
   }
-
 }
