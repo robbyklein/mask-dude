@@ -2,7 +2,8 @@ using Cysharp.Threading.Tasks;
 using System.Collections;
 using UnityEngine;
 
-public class MusicManager : MonoBehaviour {
+public class MusicManager : MonoBehaviour
+{
     public static MusicManager Instance { get; private set; }
 
     [SerializeField] AudioSource musicPlayer;
@@ -10,7 +11,8 @@ public class MusicManager : MonoBehaviour {
     [SerializeField] SettingsManagerSO settings;
 
     #region Lifecycle
-    private void Awake() {
+    private void Awake()
+    {
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -19,20 +21,24 @@ public class MusicManager : MonoBehaviour {
         }
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         settings.OnMusicVolumeChange += ChangeVolume;
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         settings.OnMusicVolumeChange -= ChangeVolume;
     }
 
-    private void Start() {
+    private void Start()
+    {
         ChangeVolume(settings.musicVolume);
     }
     #endregion
 
-    public void ChangeVolume(string volumeString) {
+    public void ChangeVolume(string volumeString)
+    {
         float volume;
 
         if (float.TryParse(volumeString, out volume)) {
@@ -44,14 +50,17 @@ public class MusicManager : MonoBehaviour {
         musicPlayer.volume = volume;
     }
 
-    public void PlaySong(MusicName name) {
+    public void PlaySong(MusicName name)
+    {
         AudioClip clip = musicData.FetchMusicClip(name);
+        if (clip == musicPlayer.clip) return;
 
         musicPlayer.clip = clip;
         musicPlayer.Play();
     }
 
-    public async UniTask FadeOut(float duration) {
+    public async UniTask FadeOut(float duration)
+    {
         float startVolume = musicPlayer.volume;
         float elapsed = 0f;
 

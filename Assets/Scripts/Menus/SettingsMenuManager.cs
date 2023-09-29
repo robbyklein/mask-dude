@@ -4,13 +4,15 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [System.Serializable]
-public struct MenuSetting {
+public struct MenuSetting
+{
     public string Name;
     public string Key;
     public List<string> Options;
 }
 
-public class SettingsMenuManager : MonoBehaviour {
+public class SettingsMenuManager : MonoBehaviour
+{
     #region Dependencies
     [SerializeField] private SettingsManagerSO settings;
     [SerializeField] private InputHandlerSO input;
@@ -25,17 +27,20 @@ public class SettingsMenuManager : MonoBehaviour {
     #endregion
 
     #region Lifecycle
-    private void OnEnable() {
+    private void OnEnable()
+    {
         BuildMenuBase();
         BuildMenu();
         SubscribeToInput();
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         UnsubscribeFromInput();
     }
 
-    private void SubscribeToInput() {
+    private void SubscribeToInput()
+    {
         input.OnMenuUp += HandleMenuUp;
         input.OnMenuDown += HandleMenuDown;
         input.OnMenuLeft += HandleMenuLeft;
@@ -43,7 +48,8 @@ public class SettingsMenuManager : MonoBehaviour {
         input.OnMenuBack += HandleMenuBack;
     }
 
-    private void UnsubscribeFromInput() {
+    private void UnsubscribeFromInput()
+    {
         input.OnMenuUp -= HandleMenuUp;
         input.OnMenuDown -= HandleMenuDown;
         input.OnMenuLeft -= HandleMenuLeft;
@@ -53,14 +59,16 @@ public class SettingsMenuManager : MonoBehaviour {
     #endregion
 
     #region Building Menu
-    private void BuildMenuBase() {
+    private void BuildMenuBase()
+    {
         // Set up base
         rootEl = uiDoc.rootVisualElement;
         rootEl.Add(MenuHelpers.BuildMenuBase());
         menuBox = rootEl.Q(className: MenuHelpers.boxClass);
     }
 
-    private void BuildMenu() {
+    private void BuildMenu()
+    {
         VisualElement settingEl, optionsEl;
         string settingValue;
 
@@ -80,7 +88,8 @@ public class SettingsMenuManager : MonoBehaviour {
         }
     }
 
-    private void AddOptions(List<string> options, string settingValue, VisualElement optionsEl) {
+    private void AddOptions(List<string> options, string settingValue, VisualElement optionsEl)
+    {
         string option;
         bool isSelected;
         VisualElement optionEl;
@@ -94,7 +103,8 @@ public class SettingsMenuManager : MonoBehaviour {
         }
     }
 
-    private void AddResolutions(VisualElement optionsEl) {
+    private void AddResolutions(VisualElement optionsEl)
+    {
         string settingValue = settings.GetSettingFromKey("resolution");
 
         for (int i = 0; i < Screen.resolutions.Length; i++) {
@@ -109,14 +119,16 @@ public class SettingsMenuManager : MonoBehaviour {
     #endregion
 
     #region Changing
-    private void ChangeSelectedSetting(int newIndex) {
+    private void ChangeSelectedSetting(int newIndex)
+    {
         List<VisualElement> settings = rootEl.Query(className: MenuHelpers.settingClass).ToList();
         settings[selectedSetting].RemoveFromClassList(MenuHelpers.settingSelectedClass);
         settings[newIndex].AddToClassList(MenuHelpers.settingSelectedClass);
         selectedSetting = newIndex;
     }
 
-    private void ChangeSelectedOption(int newIndex) {
+    private void ChangeSelectedOption(int newIndex)
+    {
         // Get options list
         VisualElement settingEl = rootEl.Query(className: MenuHelpers.settingClass).AtIndex(selectedSetting);
         List<Label> optionEls = settingEl.Query<Label>(className: MenuHelpers.settingOptionClass).ToList();
@@ -132,7 +144,8 @@ public class SettingsMenuManager : MonoBehaviour {
         selectedOptions[selectedSetting] = newIndex;
     }
 
-    private int GetTotalOptions() {
+    private int GetTotalOptions()
+    {
         List<VisualElement> settingEls = rootEl.Query(className: MenuHelpers.settingClass).ToList();
         List<VisualElement> optionEls = settingEls[selectedSetting].Query(className: MenuHelpers.settingOptionClass).ToList();
         return optionEls.Count - 1;
@@ -140,28 +153,35 @@ public class SettingsMenuManager : MonoBehaviour {
     #endregion
 
     #region Input Handlers
-    private void HandleMenuUp() {
+    private void HandleMenuUp()
+    {
         ChangeSelectedSetting(selectedSetting == 0 ? menuSettings.Count - 1 : selectedSetting - 1);
         SFXManager.Instance.PlaySFX(SFXName.Click);
     }
-    private void HandleMenuDown() {
+    private void HandleMenuDown()
+    {
         ChangeSelectedSetting(selectedSetting < menuSettings.Count - 1 ? selectedSetting + 1 : 0);
         SFXManager.Instance.PlaySFX(SFXName.Click);
     }
 
-    private void HandleMenuLeft() {
+    private void HandleMenuLeft()
+    {
         int totalOptions = GetTotalOptions();
         int newIndex = selectedOptions[selectedSetting] == 0 ? totalOptions : selectedOptions[selectedSetting] - 1;
         ChangeSelectedOption(newIndex);
         SFXManager.Instance.PlaySFX(SFXName.Click);
     }
 
-    private void HandleMenuRight() {
+    private void HandleMenuRight()
+    {
         int totalOptions = GetTotalOptions();
         int newIndex = selectedOptions[selectedSetting] == totalOptions ? 0 : selectedOptions[selectedSetting] + 1;
         ChangeSelectedOption(newIndex);
         SFXManager.Instance.PlaySFX(SFXName.Click);
     }
-    private void HandleMenuBack() { }
+    private void HandleMenuBack()
+    {
+        GameManager.Instance.ChangeScene(GameScene.MainMenu);
+    }
     #endregion
 }

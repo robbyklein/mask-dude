@@ -1,0 +1,28 @@
+* {
+  -unity-font: url("project://database/Assets/Fonts/PixelOperator/PixelOperatorMono8-bold.ttf");
+  -unity-font-definition: initial;
+}
+
+.main-menu {
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 60px;
+}
+
+.main-menu__options {
+  flex-direction: row;
+}
+
+.main-menu__option {
+  font-size: 20px;
+  letter-spacing: -7px;
+  color: #ffffff;
+  margin: 0 20px;
+  opacity: 0.3;
+}
+
+.main-menu__option--selected {
+  opacity: 1;
+}

@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenu/MainMenu.uss" />
+    <ui:VisualElement class="main-menu">
+        <ui:VisualElement class="main-menu__options" name="main-menu__options">
+            <ui:Label text="Start game" class="main-menu__option main-menu__option--selected" name="start"/>
+            <ui:Label text="Settings" class="main-menu__option" name="settings"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
