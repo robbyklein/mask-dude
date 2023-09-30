@@ -1,0 +1,20 @@
+.health-bar {
+  width: 100px;
+  border-radius: 7px;
+  border-width: 2px;
+  height: 14px;
+  border-color: #ffffff;
+  translate: -50% -100%;
+  margin-top: -20px;
+}
+
+.health-bar__filled {
+  width: 200px;
+  height: 10px;
+  background-color: red;
+  width: 100%;
+  border-radius: 5px;
+  transition-property: width;
+  transition-duration: 0.1s;
+  transition-timing-function: linear;
+}

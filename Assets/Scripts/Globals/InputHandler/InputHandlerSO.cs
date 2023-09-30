@@ -144,7 +144,6 @@ public class InputHandlerSO : ScriptableObject {
                 activeMap = InputMap.Menu;
                 break;
             case InputMap.Game:
-                Debug.Log("Enabling game!");
                 input.Game.Enable();
                 activeMap = InputMap.Game;
                 break;
