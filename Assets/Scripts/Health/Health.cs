@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HasHealth : MonoBehaviour {
+public class Health : MonoBehaviour {
   [SerializeField] private CharacterStatsSO stats;
   [SerializeField] private LayerMask projectileLayer;
   [SerializeField] private HealthBarDisplay display;
