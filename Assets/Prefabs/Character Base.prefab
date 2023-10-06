@@ -120,7 +120,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6920139052775563130
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54daa121f1b410e4fa178210cc6695e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 9.8
+  gravity: 20
 --- !u!114 &2940160703503959033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,8 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591bfe22576257049b55aca5491b24e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  accelerationTime: 0.1
+  speed: 8.5
+  accelerationTime: 0.2
 --- !u!114 &5601283133653407649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73289f82808e8a84ea221656527d44fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 10
+  jumpForce: 12
 --- !u!114 &1090385034093423679
 MonoBehaviour:
   m_ObjectHideFlags: 0
