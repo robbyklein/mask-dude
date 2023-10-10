@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4769012683578918753}
   - component: {fileID: 676885821502016488}
   - component: {fileID: 3874719554817702897}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy Trigger Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}

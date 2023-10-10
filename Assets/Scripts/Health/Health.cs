@@ -11,9 +11,9 @@ public class Health : MonoBehaviour {
     health = stats.Health;
   }
 
-  private void OnCollisionEnter2D(Collision2D collision) {
+  private void OnTriggerEnter2D(Collider2D collision) {
     if ((projectileLayer.value & (1 << collision.gameObject.layer)) != 0) {
-      TakeDamage(stats.projectileDamage);
+      // TakeDamage(stats.projectileDamage);
     }
   }
 

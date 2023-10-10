@@ -3,7 +3,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour, IPoolable {
     private ObjectPool objectPool;
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         objectPool.Return(gameObject);
     }
 

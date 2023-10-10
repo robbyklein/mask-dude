@@ -6,7 +6,7 @@ public class ChaseTarget : MonoBehaviour {
   [SerializeField] private float directionChangeSmoothness = 0.05f;
   [SerializeField] private float chaseThreshold = 1f;
 
-  private bool shouldChase = false;
+  private bool shouldChase = true;
   private float currentDirection = 0;
 
   private void Update() {

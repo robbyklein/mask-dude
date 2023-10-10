@@ -18,8 +18,6 @@ public class ThrowsAndDamages : MonoBehaviour {
 
   private void OnTriggerStay2D(Collider2D other) {
     if (((1 << other.gameObject.layer) & throwSubjectLayer) != 0) {
-      Debug.Log("Something entered the enemy area");
-
       DamageAndThrowPlayer().Forget();
     }
   }
