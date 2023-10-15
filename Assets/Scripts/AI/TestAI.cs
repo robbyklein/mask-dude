@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class TestAI : MonoBehaviour {
-  private BTNode root;
+  private BaseNode root;
   private DashAtTarget dash;
   private ShootsForDuration shootsForDuration;
   private ChaseTarget chaseTarget;
@@ -26,9 +26,9 @@ public class TestAI : MonoBehaviour {
   }
 
   private void ConstructBehaviorTree() {
-    root = new SelectorNode(new List<BTNode>
+    root = new SequenceNode(new List<BaseNode>
     {
-        new SequenceNode(new List<BTNode>
+        new SequenceNode(new List<BaseNode>
         {
             new ChanceNode(0.5f),
             new ActionNode(() => chaseTarget.SetChase(false)),
@@ -37,17 +37,17 @@ public class TestAI : MonoBehaviour {
             new WaitNode(0.5f),
             new ActionNode(() => chaseTarget.SetChase(true))
         }),
-        new SequenceNode(new List<BTNode>
+        new SequenceNode(new List<BaseNode>
         {
             new WaitNode(2f),
-            new SelectorNode(new List<BTNode>
+            new SelectorNode(new List<BaseNode>
             {
-                new SequenceNode(new List<BTNode>
+                new SequenceNode(new List<BaseNode>
                 {
                     new ChanceNode(0.5f),
                     new ActionNode(() => shootsForDuration.ShootForDuration(0.5f))
                 }),
-                new SequenceNode(new List<BTNode>
+                new SequenceNode(new List<BaseNode>
                 {
                     new ActionNode(() => jumps.Jump()),
                     new WaitNode(0.5f),

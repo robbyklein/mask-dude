@@ -5,7 +5,7 @@ public class Moves : MonoBehaviour {
   [SerializeField] private float speed = 5f;
   [SerializeField] private float accelerationTime = 0.1f;
 
-  private float velocityXSmooth;
+  public float VelocityXSmooth;
 
   private void Start() {
     rb = GetComponent<Rigidbody2D>();
@@ -24,7 +24,7 @@ public class Moves : MonoBehaviour {
     transform.localScale = localScale;
 
     rb.velocity = new Vector2(
-        Mathf.SmoothDamp(rb.velocity.x, targetVelocityX, ref velocityXSmooth, accelerationTime),
+        Mathf.SmoothDamp(rb.velocity.x, targetVelocityX, ref VelocityXSmooth, accelerationTime),
         rb.velocity.y
     );
   }

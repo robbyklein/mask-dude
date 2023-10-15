@@ -2,7 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class WaitNode : BTNode {
+public class WaitNode : BaseNode {
   private float duration;
 
   public WaitNode(float duration) {

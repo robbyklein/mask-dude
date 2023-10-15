@@ -1,7 +1,7 @@
 using System;
 using Cysharp.Threading.Tasks;
 
-public class ActionNode : BTNode {
+public class ActionNode : BaseNode {
   private Action action;
 
   public ActionNode(Action action) {
@@ -11,6 +11,6 @@ public class ActionNode : BTNode {
   public override UniTask<bool> Execute() {
     UnityEngine.Debug.Log($"Calling action node {action}");
     action();
-    return UniTask.FromResult(true); // Assuming synchronous actions always succeed.
+    return UniTask.FromResult(true);
   }
 }

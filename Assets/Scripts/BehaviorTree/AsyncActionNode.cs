@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
 
-public class AsyncActionNode : BTNode {
+public class AsyncActionNode : BaseNode {
   private System.Func<UniTask> asyncAction;
 
   public AsyncActionNode(System.Func<UniTask> asyncAction) {

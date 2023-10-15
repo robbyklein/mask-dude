@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class SequenceNode : BTNode {
-  private List<BTNode> children;
+public class SequenceNode : BaseNode {
+  private List<BaseNode> children;
 
-  public SequenceNode(List<BTNode> children) {
+  public SequenceNode(List<BaseNode> children) {
     this.children = children;
   }
 

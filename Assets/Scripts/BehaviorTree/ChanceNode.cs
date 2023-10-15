@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class ChanceNode : BTNode {
+public class ChanceNode : BaseNode {
   private float probability;
 
   public ChanceNode(float probability) {

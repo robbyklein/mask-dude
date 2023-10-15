@@ -10,8 +10,14 @@ public class MovementHelpers : MonoBehaviour {
   }
 
   public bool IsGrounded() {
-    Vector2 boxSize = new Vector2(Mathf.Abs(boxCollider.size.x) * Mathf.Abs(transform.localScale.x), boxCollider.size.y * Mathf.Abs(transform.localScale.y));
-    Vector2 boxCenter = (Vector2)transform.position - new Vector2(0, 0.1f);
+    Vector2 boxSize = new Vector2(
+        Mathf.Abs(boxCollider.size.x) * Mathf.Abs(transform.localScale.x),
+        boxCollider.size.y * Mathf.Abs(transform.localScale.y)
+    );
+
+    // Shift the boxCenter downwards by 0.2f
+    Vector2 boxCenter = (Vector2)transform.position + boxCollider.offset - new Vector2(0, groundCheckDistance);
+
     RaycastHit2D hit = Physics2D.BoxCast(boxCenter, boxSize, 0f, Vector2.down, groundCheckDistance, groundLayer);
 
 #if UNITY_EDITOR
@@ -20,6 +26,8 @@ public class MovementHelpers : MonoBehaviour {
 
     return hit.collider != null;
   }
+
+
 
   private void DrawDebugBox(Vector2 boxCenter, Vector2 boxSize) {
     float halfWidth = boxSize.x / 2;

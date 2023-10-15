@@ -3,7 +3,7 @@ using UnityEngine;
 public class Shoots : MonoBehaviour {
     [SerializeField] private ObjectPool objectPool;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] private float projectileSpeed = 25f;
 
     public void Shoot() {
         GameObject projectile = objectPool.GetObject();

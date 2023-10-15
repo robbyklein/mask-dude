@@ -2,10 +2,10 @@ using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectorNode : BTNode {
-  private List<BTNode> children;
+public class SelectorNode : BaseNode {
+  private List<BaseNode> children;
 
-  public SelectorNode(List<BTNode> children) {
+  public SelectorNode(List<BaseNode> children) {
     this.children = children;
   }
 
