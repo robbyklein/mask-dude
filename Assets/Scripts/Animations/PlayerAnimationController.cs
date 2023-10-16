@@ -28,8 +28,6 @@ public class PlayerAnimationController : MonoBehaviour {
     velX = Mathf.Abs(rb.velocity.x);
     velY = Mathf.Abs(rb.velocity.y);
 
-    Debug.Log(velY);
-
     if (jumps.IsGrounded && velX > runThreshold) {
       ChangeState(State.Running);
     } else if (!jumps.IsGrounded && velY > 0.1f) {
