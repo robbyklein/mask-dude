@@ -1,0 +1,90 @@
+* {
+  -unity-font: url("project://database/Assets/Fonts/NotoSans/NotoSans-Bold.ttf");
+  -unity-font-definition: initial;
+}
+
+.pause {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  transition-duration: 300ms;
+  transition-property: background-color;
+  transition-timing-function: ease-out;
+}
+
+.pause.pause--active {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.pause-header {
+  width: 100%;
+  height: 150px;
+  background-image: url("project://database/Assets/Art/UI/header-bg.png");
+  translate: 0 -100%;
+  transition-duration: 300ms;
+  transition-property: translate;
+  transition-timing-function: ease-out;
+}
+
+.pause.pause--active .pause-header {
+  translate: 0 0;
+}
+
+.pause-header__heading {
+  color: #ffffff;
+  font-size: 42px;
+  margin-left: 30px;
+  rotate: -2deg;
+}
+
+.pause-header__stage {
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  height: 40px;
+  width: 240px;
+  bottom: 0px;
+  rotate: 2deg;
+  margin-left: -60px;
+  border-radius: 20px;
+}
+
+.pause-header__bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+.pause-header__bar--one {
+  bottom: 5px;
+  background-color: #755fff;
+}
+
+.pause-header__bar--two {
+  bottom: 14px;
+  background-color: #d55fff;
+}
+
+.pause-header__bar--three {
+  bottom: 23px;
+  background-color: #ff5fb5;
+}
+
+.pause__body {
+  flex: 1;
+}
+
+.pause-footer {
+  width: 100%;
+  height: 150px;
+  background-image: url("project://database/Assets/Art/UI/footer-bg.png");
+  translate: 0 100%;
+  transition-duration: 300ms;
+  transition-property: translate;
+  transition-timing-function: ease-out;
+}
+
+.pause.pause--active .pause-footer {
+  translate: 0 0;
+}

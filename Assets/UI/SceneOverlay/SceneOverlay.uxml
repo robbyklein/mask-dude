@@ -1,17 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/SceneOverlay/SceneOverlay.uss" />
-    <ui:VisualElement class="scene-overlay" name="scene-overlay">
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--0" />
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--1" />
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--2" />
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--3" />
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--4" />
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--5" />
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--6" />
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--7" />
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--8" />
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--9" />
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--10" />
-        <ui:VisualElement class="scene-overlay__bar scene-overlay__bar--11" />
+    <ui:VisualElement class="scene-overlay scene-overlay--fade" name="scene-overlay">
     </ui:VisualElement>
 </ui:UXML>

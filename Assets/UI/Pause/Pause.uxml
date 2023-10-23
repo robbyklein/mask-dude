@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Pause/Pause.uss" />
+    
+    <ui:VisualElement class="pause" name="pause">
+        <ui:VisualElement class="pause-header">
+            <ui:Label class="pause-header__heading" text="PAUSE MENU" />
+        </ui:VisualElement>
+
+        <ui:VisualElement class="pause__body">
+        </ui:VisualElement>
+
+        <ui:VisualElement class="pause-footer">
+        </ui:VisualElement>
+    </ui:VisualElement>
+
+    <ui:VisualElement class="center"></ui:VisualElement>
+
+</ui:UXML>

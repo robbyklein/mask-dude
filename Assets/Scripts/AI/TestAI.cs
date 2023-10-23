@@ -1,13 +1,21 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
-public class TestAI : MonoBehaviour {
-  private BaseNode root;
+public class TestAI : BaseAI {
+  #region Dependencies
   private DashAtTarget dash;
   private ShootsForDuration shootsForDuration;
   private ChaseTarget chaseTarget;
   private Jumps jumps;
+  #endregion
+
+  #region State
+  private BaseNode root;
+  private bool active = false;
+  private UniTaskCompletionSource activationSignal = new UniTaskCompletionSource();
+  #endregion
 
   private void Start() {
     dash = GetComponent<DashAtTarget>();
@@ -19,9 +27,24 @@ public class TestAI : MonoBehaviour {
     _ = BehaviorTreeLoop();
   }
 
+  public override bool Active {
+    get => active;
+    set {
+      active = value;
+      if (active) {
+        activationSignal.TrySetResult();
+        activationSignal = new UniTaskCompletionSource();
+      }
+    }
+  }
+
   private async UniTaskVoid BehaviorTreeLoop() {
     while (true) {
-      await root.Execute();
+      if (Active) {
+        await root.Execute();
+      } else {
+        await activationSignal.Task;
+      }
     }
   }
 
@@ -55,7 +78,6 @@ public class TestAI : MonoBehaviour {
                 })
             })
         }),
-
     });
   }
 }

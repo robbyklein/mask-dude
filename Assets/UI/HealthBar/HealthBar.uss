@@ -14,7 +14,11 @@
   background-color: red;
   width: 100%;
   border-radius: 5px;
-  transition-property: width;
-  transition-duration: 0.1s;
-  transition-timing-function: linear;
+  transition-property: width, background-color;
+  transition-duration: 0.1s, 0.3s;
+  transition-timing-function: linear, linear;
+}
+
+.health-bar.health-bar--grayscale .health-bar__filled {
+  background-color: #686868;
 }
