@@ -1,5 +1,5 @@
 * {
-  -unity-font: url("project://database/Assets/Fonts/NotoSans/NotoSans-Bold.ttf");
+  -unity-font: url("project://database/Assets/Fonts/NotoSans/NotoSans-ExtraBold.ttf");
   -unity-font-definition: initial;
 }
 
@@ -13,17 +13,18 @@
 }
 
 .pause.pause--active {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .pause-header {
   width: 100%;
-  height: 150px;
-  background-image: url("project://database/Assets/Art/UI/header-bg.png");
+  height: 188.5px;
+  background-image: url("project://database/Assets/Art/UI/header-back.png");
   translate: 0 -100%;
   transition-duration: 300ms;
   transition-property: translate;
   transition-timing-function: ease-out;
+  position: relative;
 }
 
 .pause.pause--active .pause-header {
@@ -32,21 +33,47 @@
 
 .pause-header__heading {
   color: #ffffff;
-  font-size: 42px;
+  text-shadow: 2px 2px 0px black;
+  font-size: 54px;
   margin-left: 30px;
+  margin-top: 0px;
   rotate: -2deg;
+  letter-spacing: -3px;
 }
 
-.pause-header__stage {
-  background-color: white;
+.pause-header__level {
+  background-size: 200px 200px;
+  background-repeat: repeat-x;
+  background-color: #3f3e46;
   position: absolute;
   left: 50%;
-  height: 40px;
-  width: 240px;
-  bottom: 0px;
-  rotate: 2deg;
-  margin-left: -60px;
-  border-radius: 20px;
+  height: 54px;
+  width: 540px;
+  bottom: 72px;
+  translate: -50% 0;
+  border-radius: 30px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.pause-header__level-inner {
+  width: 100%;
+  height: 54px;
+  align-items: center;
+  justify-content: center;
+  background-size: 200px;
+  background-image: url("project://database/Assets/Art/UI/pattern-black.png");
+  background-repeat: repeat;
+}
+
+.pause-header__level-text {
+  color: #ffffff;
+  text-shadow: 1px 1px 0px #000000;
+  height: 54px;
+  -unity-font: url("project://database/Assets/Fonts/NotoSans/NotoSans-SemiBold.ttf");
+
+  font-size: 32px;
 }
 
 .pause-header__bar {

@@ -6,7 +6,7 @@ using System;
 public class GrayscaleManager : MonoBehaviour {
     public static GrayscaleManager Instance { get; private set; }
     private Volume volume;
-    public Action<bool> GrayscaleChangeStart;
+    public static Action<bool> GrayscaleChangeStart;
 
     private void Awake() {
         if (Instance == null) {

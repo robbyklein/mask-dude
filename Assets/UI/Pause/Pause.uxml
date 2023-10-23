@@ -3,7 +3,13 @@
     
     <ui:VisualElement class="pause" name="pause">
         <ui:VisualElement class="pause-header">
-            <ui:Label class="pause-header__heading" text="PAUSE MENU" />
+            <ui:Label class="pause-header__heading" text="Pause Menu" />
+
+            <ui:VisualElement class="pause-header__level">
+                <ui:VisualElement class="pause-header__level-inner">
+                    <ui:Label class="pause-header__level-text" text="Starman" />
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
 
         <ui:VisualElement class="pause__body">

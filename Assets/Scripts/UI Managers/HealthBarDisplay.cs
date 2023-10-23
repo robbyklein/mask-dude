@@ -23,14 +23,14 @@ public class HealthBarDisplay : MonoBehaviour {
   }
 
   private void OnEnable() {
-    GrayscaleManager.Instance.GrayscaleChangeStart += handleGrayscaleChange;
+    GrayscaleManager.GrayscaleChangeStart += handleGrayscaleChange;
     rootEl = uiDoc.rootVisualElement;
     healthBarEl = rootEl.Q("health-bar");
     filledEl = rootEl.Q("health-bar__filled");
   }
 
   private void OnDisable() {
-    GrayscaleManager.Instance.GrayscaleChangeStart -= handleGrayscaleChange;
+    GrayscaleManager.GrayscaleChangeStart -= handleGrayscaleChange;
   }
 
   private void LateUpdate() {

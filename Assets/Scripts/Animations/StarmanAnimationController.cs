@@ -27,7 +27,6 @@ public class StarmanAnimationController : MonoBehaviour {
     }
 
     private void Update() {
-        Debug.Log(currentState);
         velX = Mathf.Abs(rb.velocity.x);
         velY = Mathf.Abs(rb.velocity.y);
 
