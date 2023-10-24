@@ -1,6 +1,8 @@
 * {
   -unity-font: url("project://database/Assets/Fonts/NotoSans/NotoSans-ExtraBold.ttf");
   -unity-font-definition: initial;
+  margin: 0;
+  padding: 0;
 }
 
 .pause {
@@ -39,12 +41,13 @@
   margin-top: 0px;
   rotate: -2deg;
   letter-spacing: -3px;
+  margin-top: 10px;
 }
 
 .pause-header__level {
   background-size: 200px 200px;
   background-repeat: repeat-x;
-  background-color: #3f3e46;
+  background-color: #605d78;
   position: absolute;
   left: 50%;
   height: 54px;
@@ -70,9 +73,7 @@
 .pause-header__level-text {
   color: #ffffff;
   text-shadow: 1px 1px 0px #000000;
-  height: 54px;
   -unity-font: url("project://database/Assets/Fonts/NotoSans/NotoSans-SemiBold.ttf");
-
   font-size: 32px;
 }
 
@@ -100,6 +101,21 @@
 
 .pause__body {
   flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.pause-section {
+  opacity: 0;
+  translate: 40px 0;
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+.pause-section.pause-section--active {
+  translate: 0 0;
+  opacity: 1;
 }
 
 .pause-footer {
@@ -114,4 +130,105 @@
 
 .pause.pause--active .pause-footer {
   translate: 0 0;
+}
+
+.pause-button {
+  position: relative;
+  width: 500px;
+}
+
+.pause-button {
+  margin: 15px 0;
+}
+
+.pause-button__shadow {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  top: 12px;
+  left: 12px;
+  position: absolute;
+  border-radius: 35px;
+}
+
+.pause-button__inner {
+  height: 70px;
+  border-radius: 35px;
+  background-color: #ffffff;
+  color: #000;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+.pause-button--selected .pause-button__inner {
+  background-color: #ff5fb5;
+}
+
+.pause-button__dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 6px;
+  background-image: url("project://database/Assets/Art/UI/pink-dots.png");
+  background-repeat: repeat;
+  align-items: center;
+  justify-content: center;
+}
+
+.pause-button__border {
+  position: absolute;
+  top: -1;
+  left: -1px;
+  width: 502px;
+  height: 72px;
+  border-radius: 35px;
+  border-width: 5px;
+  border-color: #000;
+}
+
+.pause-button__gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 35px;
+  width: 1200px;
+  height: 100%;
+  background-image: url("project://database/Assets/Art/UI/pink-gradient.png");
+  display: none;
+}
+
+.pause-button--selected .pause-button__gradient {
+  display: flex;
+}
+
+.pause-button__text {
+  flex-direction: row;
+  font-size: 32px;
+}
+.pause-button__letter {
+  margin: 0;
+  padding: 0;
+  margin-left: -1px;
+  transition-property: translate;
+  transition-duration: 400ms;
+  -o-transition-timing-function: ease-in-out;
+}
+
+.pause-button--selected .pause-button__letter--active {
+  translate: 0 -5px;
+}
+
+.pause-button__press {
+  translate: 2px 2px;
+}
+
+.pause-button--selected .pause-button__press {
+  translate: 0px 0px;
+}
+
+.pause-button--active .pause-button__press {
+  translate: 7px 7px;
 }
