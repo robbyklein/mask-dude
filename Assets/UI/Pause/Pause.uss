@@ -1,10 +1,13 @@
+/* #region Reset */
 * {
   -unity-font: url("project://database/Assets/Fonts/NotoSans/NotoSans-ExtraBold.ttf");
   -unity-font-definition: initial;
   margin: 0;
   padding: 0;
 }
+/* #endregion */
 
+/* #region Wrapper */
 .pause {
   height: 100%;
   width: 100%;
@@ -17,7 +20,9 @@
 .pause.pause--active {
   background-color: rgba(0, 0, 0, 0.8);
 }
+/* #endregion */
 
+/* #region Header */
 .pause-header {
   width: 100%;
   height: 188.5px;
@@ -76,30 +81,10 @@
   -unity-font: url("project://database/Assets/Fonts/NotoSans/NotoSans-SemiBold.ttf");
   font-size: 32px;
 }
+/* #endregion */
 
-.pause-header__bar {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 3px;
-}
-
-.pause-header__bar--one {
-  bottom: 5px;
-  background-color: #755fff;
-}
-
-.pause-header__bar--two {
-  bottom: 14px;
-  background-color: #d55fff;
-}
-
-.pause-header__bar--three {
-  bottom: 23px;
-  background-color: #ff5fb5;
-}
-
-.pause__body {
+/* #region body */
+.pause-body {
   flex: 1;
   align-items: center;
   justify-content: center;
@@ -117,7 +102,9 @@
   translate: 0 0;
   opacity: 1;
 }
+/* #endregion */
 
+/* #region footer */
 .pause-footer {
   width: 100%;
   height: 150px;
@@ -131,13 +118,12 @@
 .pause.pause--active .pause-footer {
   translate: 0 0;
 }
+/* #endregion */
 
+/* #region Nav items */
 .pause-button {
   position: relative;
   width: 500px;
-}
-
-.pause-button {
   margin: 15px 0;
 }
 
@@ -149,33 +135,6 @@
   left: 12px;
   position: absolute;
   border-radius: 35px;
-}
-
-.pause-button__inner {
-  height: 70px;
-  border-radius: 35px;
-  background-color: #ffffff;
-  color: #000;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-}
-
-.pause-button--selected .pause-button__inner {
-  background-color: #ff5fb5;
-}
-
-.pause-button__dots {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: 6px;
-  background-image: url("project://database/Assets/Art/UI/pink-dots.png");
-  background-repeat: repeat;
-  align-items: center;
-  justify-content: center;
 }
 
 .pause-button__border {
@@ -200,35 +159,68 @@
   display: none;
 }
 
-.pause-button--selected .pause-button__gradient {
+.nav-item.nav-item--selected .pause-button__gradient {
   display: flex;
+}
+
+.pause-button__press {
+  translate: 4px 4px;
+  transition-property: translate;
+  transition-duration: 100ms;
+  transition-timing-function: linear;
+}
+
+.nav-item.nav-item--selected .pause-button__press {
+  translate: 0px 0px;
+}
+
+.nav-item.nav-item--pressed .pause-button__press {
+  translate: 7px 7px;
+}
+
+.pause-button__inner {
+  height: 70px;
+  border-radius: 35px;
+  background-color: #ffffff;
+  color: #000;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-item.nav-item--selected .pause-button__inner {
+  background-color: #ff5fb5;
+}
+
+.pause-button__dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 6px;
+  background-image: url("project://database/Assets/Art/UI/pink-dots.png");
+  background-repeat: repeat;
+  align-items: center;
+  justify-content: center;
 }
 
 .pause-button__text {
   flex-direction: row;
   font-size: 32px;
 }
+
 .pause-button__letter {
   margin: 0;
   padding: 0;
   margin-left: -1px;
   transition-property: translate;
   transition-duration: 400ms;
-  -o-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
 }
 
-.pause-button--selected .pause-button__letter--active {
+.nav-item.nav-item--selected .pause-button__letter--active {
   translate: 0 -5px;
 }
 
-.pause-button__press {
-  translate: 2px 2px;
-}
-
-.pause-button--selected .pause-button__press {
-  translate: 0px 0px;
-}
-
-.pause-button--active .pause-button__press {
-  translate: 7px 7px;
-}
+/* #endregion */

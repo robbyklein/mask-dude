@@ -12,17 +12,15 @@
             </ui:VisualElement>
         </ui:VisualElement>
 
-        <ui:VisualElement class="pause__body">
-            <ui:VisualElement class="pause-section">
-                <ui:VisualElement class="pause-nav">
-                </ui:VisualElement>
+        <ui:VisualElement class="pause-body">
+            <ui:VisualElement class="pause-section pause-section--nav">
+            </ui:VisualElement>
+
+            <ui:VisualElement class="pause-section pause-section--settings">
             </ui:VisualElement>
         </ui:VisualElement>
 
         <ui:VisualElement class="pause-footer">
         </ui:VisualElement>
     </ui:VisualElement>
-
-    <ui:VisualElement class="center"></ui:VisualElement>
-
 </ui:UXML>

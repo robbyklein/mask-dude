@@ -21,7 +21,10 @@ public class PauseManager : MonoBehaviour {
   public static PauseManager Instance { get; private set; }
 
   private int selectedSection = 0;
-  private int selectedNavItem = 0;
+  private VisualElement selectedSectionEl;
+
+  private int selectedItem = 0;
+  private VisualElement selectedItemEl;
   #endregion
 
   #region UI Elements
@@ -38,9 +41,10 @@ public class PauseManager : MonoBehaviour {
   private string levelInnerCls = "pause-header__level-inner";
   private string sectionCls = "pause-section";
   private string sectionActiveCls = "pause-section--active";
-  private string navCls = "pause-nav";
-  private string buttonCls = "pause-button";
-  private string buttonSelectedCls = "pause-button--selected";
+  private string navCls = "pause-section--nav";
+  private string navItemCls = "nav-item";
+  private string navItemSelectedCls = "nav-item--selected";
+  private string navItemPressedCls = "nav-item--pressed";
   #endregion
 
   #region Lifecycle
@@ -66,6 +70,7 @@ public class PauseManager : MonoBehaviour {
     input.OnMenuBack += HandleUnpause;
     input.OnMenuDown += HandleDown;
     input.OnMenuUp += HandleUp;
+    input.OnMenuSelect += HandleSelect;
 
     // Build the menus
     BuildNav();
@@ -80,11 +85,12 @@ public class PauseManager : MonoBehaviour {
     input.OnMenuBack -= HandleUnpause;
     input.OnMenuDown -= HandleDown;
     input.OnMenuUp -= HandleUp;
+    input.OnMenuSelect -= HandleSelect;
   }
   #endregion
 
   private void BuildNav() {
-    // Add items
+    // Add nav items
     foreach (PauseMenuOption option in menuOptions) {
       VisualElement menuButton = PauseManagerHelpers.BuildMenuButton(option.Name);
       navEl.Add(menuButton);
@@ -94,16 +100,33 @@ public class PauseManager : MonoBehaviour {
     _ = ShiftBackgroundPositionForDots();
   }
 
-  private void SelectInitialOptions() {
-    rootEl.Query(className: buttonCls).AtIndex(selectedNavItem).AddToClassList(buttonSelectedCls);
-    rootEl.Q(className: sectionCls).AddToClassList(sectionActiveCls);
+  private void SelectOption() {
+    if (selectedItemEl != null) {
+      selectedItemEl.RemoveFromClassList(navItemSelectedCls);
+    }
+
+    selectedItemEl = rootEl.Query(className: navItemCls).AtIndex(selectedItem);
+    if (selectedItemEl != null) {
+      selectedItemEl.AddToClassList(navItemSelectedCls);
+      _ = CycleActiveLetter(selectedItemEl);
+    }
+  }
+
+  private async UniTaskVoid SelectPage() {
+    VisualElement selected = rootEl.Q(className: sectionActiveCls);
+    if (selected != null) {
+      selected.RemoveFromClassList(sectionActiveCls);
+      await UniTask.Delay(TimeSpan.FromMilliseconds(300), ignoreTimeScale: true);
+    }
+
+    rootEl.Query(className: sectionCls).AtIndex(selectedSection).AddToClassList(sectionActiveCls);
   }
 
   private void ResetPauseUI() {
     pauseEl.RemoveFromClassList(activeCls);
     rootEl.Q(className: sectionActiveCls).RemoveFromClassList(sectionActiveCls);
-    rootEl.Q(className: buttonSelectedCls).RemoveFromClassList(buttonSelectedCls);
-    selectedNavItem = 0;
+    rootEl.Q(className: navItemSelectedCls).RemoveFromClassList(navItemSelectedCls);
+    selectedItem = 0;
     selectedSection = 0;
   }
 
@@ -138,15 +161,19 @@ public class PauseManager : MonoBehaviour {
     }
   }
 
-  private async UniTaskVoid CycleActiveLetter(VisualElement selectedButton) {
-    var letters = selectedButton.Query<Label>(className: "pause-button__letter").ToList();
+  private async UniTaskVoid CycleActiveLetter(VisualElement selectedItemEl) {
+    var letters = selectedItemEl.Query<Label>(className: "pause-button__letter").ToList();
 
-    while (true) {
+    while (selectedItemEl == this.selectedItemEl) {
       foreach (var letter in letters) {
+        if (selectedItemEl != this.selectedItemEl) break;
+
         letter.AddToClassList("pause-button__letter--active");
         await UniTask.Delay(TimeSpan.FromMilliseconds(200), cancellationToken: this.GetCancellationTokenOnDestroy(), ignoreTimeScale: true);
         letter.RemoveFromClassList("pause-button__letter--active");
       }
+
+      if (selectedItemEl != this.selectedItemEl) break;
       await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: this.GetCancellationTokenOnDestroy(), ignoreTimeScale: true);
     }
   }
@@ -154,8 +181,9 @@ public class PauseManager : MonoBehaviour {
 
   #region On/off and menu switches
   public void ShowPauseMenu() {
-    SelectInitialOptions();
+    SelectOption();
     pauseEl.AddToClassList(activeCls);
+    SelectPage();
   }
 
   public void HidePauseMenu() {
@@ -173,9 +201,37 @@ public class PauseManager : MonoBehaviour {
   }
 
   private void HandleUp() {
+    if (selectedItem == 0) {
+      selectedItem = menuOptions.Count - 1;
+    } else {
+      selectedItem -= 1;
+    }
+
+    SelectOption();
   }
 
   private void HandleDown() {
+    if (selectedItem == menuOptions.Count - 1) {
+      selectedItem = 0;
+    } else {
+      selectedItem += 1;
+    }
+
+    SelectOption();
+  }
+
+  private async void HandleSelect() {
+    _ = HandleSelectAsync();
+  }
+
+  private async UniTask HandleSelectAsync() {
+    await PressButton();
+    if (selectedItemEl != null) selectedItemEl.RemoveFromClassList(navItemPressedCls);
+  }
+
+  private async UniTask PressButton() {
+    if (selectedItemEl != null) selectedItemEl.AddToClassList(navItemPressedCls);
+    await UniTask.Delay(TimeSpan.FromMilliseconds(100), ignoreTimeScale: true);
   }
   #endregion
 }

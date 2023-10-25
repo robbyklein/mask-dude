@@ -4,6 +4,7 @@ public class PauseManagerHelpers {
   public static VisualElement BuildMenuButton(string buttonText) {
     VisualElement pauseButton = new VisualElement();
     pauseButton.AddToClassList("pause-button");
+    pauseButton.AddToClassList("nav-item");
 
     VisualElement pauseButtonShadow = new VisualElement();
     pauseButtonShadow.AddToClassList("pause-button__shadow");
